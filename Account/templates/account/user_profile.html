@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<pre>
+    {% for profile in profiles %}
+        Username: {{ profile.user }}
+        Email: {{ profile.user.email }}
+        Phone: {{ profile.phoneNumber }}
+        City: {{ profile.country }}
+        Image: {{ profile.profileImage }}
+
+    {% endfor %}
+    Username: {{ user }}
+Email: {{ user.email }}
+Phone: {{ userprofile.phoneNumber }}
+City: {{ user.userprofile.country }}
+    Image: {{ user.userprofile.profileImage }}
+</pre>
+</body>
+</html>

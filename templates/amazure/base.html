@@ -1,0 +1,331 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    {#    block for all meta tags#}
+    {% block meta %}
+    {% endblock %}
+    {#    block for title of page#}
+    {% block title %}
+    {% endblock %}
+    {# block for other links #}
+    {% block extra %}
+    {% endblock %}
+    <meta charset="UTF-8">
+    <link href="{% static 'account/css/base2.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'account/images/online-sale.png' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .nav-link {
+            margin-left: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="super_container">
+    <!-- Header -->
+    <header class="header">
+        <!-- Top Bar -->
+        <div class="top_bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col d-flex flex-row">
+                        <div class="top_bar_contact_item">
+                            <div class="top_bar_icon"><img
+                                    src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918577/phone.png"
+                                    alt=""></div>
+                            +237 676 07 7139
+                        </div>
+                        <div class="top_bar_contact_item">
+                            <div class="top_bar_icon"><img
+                                    src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918597/mail.png" alt="">
+                            </div>
+                            <a href="mailto:fastsales@gmail.com">mbahromarick@gmail.com</a>
+                        </div>
+                        <div class="top_bar_content ml-auto">
+                            <div class="top_bar_menu">
+                                <ul class="standard_dropdown top_bar_dropdown">
+                                    <li><a href="#">English<i class="fas fa-chevron-down"></i></a>
+                                        <ul>
+                                            <li><a href="#">Italian</a></li>
+                                            <li><a href="#">Spanish</a></li>
+                                            <li><a href="#">Japanese</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
+                                        <ul>
+                                            <li><a href="#">EUR Euro</a></li>
+                                            <li><a href="#">GBP British Pound</a></li>
+                                            <li><a href="#">JPY Japanese Yen</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="top_bar_user">
+                                {% if user.is_authenticated %}
+                                    <div class="user_icon"><img
+                                            src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918647/user.svg"
+                                            alt=""></div>
+                                    <div><a href="{% url 'Account:user_profile' %}">Profile</a></div>
+                                    <div><a href="{% url 'logout' %}">Logout</a></div>
+                                {% else %}
+                                    <div class="user_icon"><img
+                                            src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918647/user.svg"
+                                            alt=""></div>
+                                    <div><a href="{% url 'Account:register' %}">Register</a></div>
+                                    <div><a href="{% url 'Account:user_login' %}">Login</a></div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Header Main -->
+        <div class="header_main">
+            <div class="container">
+                <div class="row">
+                    <!-- Logo -->
+                    <div class="col-lg-2 col-sm-3 col-3 order-1">
+                        <div class="logo_container">
+                            <div class="logo"><a href="{% url 'Product:index' %}">Amazure</a></div>
+                        </div>
+                    </div> <!-- Search -->
+                    <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
+                        <div class="header_search">
+                            <div class="header_search_content">
+                                <div class="header_search_form_container">
+                                    <form action="#" class="header_search_form clearfix"><input type="search"
+                                                                                                required="required"
+                                                                                                class="header_search_input"
+                                                                                                placeholder="Search for products...">
+                                        <div class="custom_dropdown" style="display: none;">
+                                            <div class="custom_dropdown_list"><span
+                                                    class="custom_dropdown_placeholder">All Categories</span> <i
+                                                    class="fas fa-chevron-down"></i>
+                                                <ul class="custom_list ">
+                                                    <li><a class="clc" href="#">All Categories</a></li>
+                                                    <li><a class="clc" href="#">Computers</a></li>
+                                                    <li><a class="clc" href="#">Laptops</a></li>
+                                                    <li><a class="clc" href="#">Cameras</a></li>
+                                                    <li><a class="clc" href="#">Hardware</a></li>
+                                                    <li><a class="clc" href="#">Smartphones</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="header_search_button trans_300" value="Submit"><img
+                                                src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918770/search.png"
+                                                alt=""></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- Wishlist -->
+                    <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
+                        <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
+                            <div class="wishlist d-flex flex-row align-items-center justify-content-end">
+                                <div class="wishlist_icon"><img
+                                        src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918681/heart.png"
+                                        alt=""></div>
+                                <div class="wishlist_content">
+                                    <div class="wishlist_text"><a href="#">Wishlist</a></div>
+                                    <div class="wishlist_count">10</div>
+                                </div>
+                            </div> <!-- Cart -->
+                            <div class="cart">
+                                <div class="cart_container d-flex flex-row align-items-center justify-content-end">
+                                    <div class="cart_icon"><img
+                                            src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918704/cart.png"
+                                            alt="">
+                                        <div class="cart_count"><span>3</span></div>
+                                    </div>
+                                    <div class="cart_content">
+                                        <div class="cart_text"><a href="#">Cart</a></div>
+                                        <div class="cart_price">$185</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {#        main navigation bar#}
+            <nav class="navbar navbar-expand-sm" style="background-color: #fafafa;  border-bottom: solid 1px rgba(0, 0, 0, 0.05);">
+
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'Product:index' %}" style="margin-right: 20px;">Home</a>
+                    </li>
+
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Categories
+                        </a>
+                        <div class="dropdown-menu">
+                             {% for category in categories %}
+                            <a class="dropdown-item" href="{% url 'Product:category_page' category.id %}">{{ category.name }}</a>
+                            {% endfor %}
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+
+                </ul>
+            </nav>
+            {% block content %}
+            {% endblock %}
+            <!-- Footer -->
+            <footer class="page-footer font-small" style="background-color: black;">
+
+                <div style="background-color:#0e8ce4;">
+                    <div class="container">
+
+                        <!-- Grid row-->
+                        <div class="row py-4 d-flex align-items-center">
+
+                            <!-- Grid column -->
+                            <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                                <h6 class="mb-0">Get connected with us on our social networks!</h6>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+                                <!-- Facebook -->
+                                <a href="#" class="social-link rounded py-2 px-4 my-2 social-facebook text-white"><i
+                                        class="fa fa-facebook-f fa-fw"></i></a>
+                                <!-- Google +-->
+                                <a class="gplus-ic text-white" href="#">
+                                    <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                                </a>
+                                <!--Linkedin -->
+                                <a class="li-ic text-white" href="#">
+                                    <i class="fab fa-linkedin-in white-text mr-4"> </i>
+                                </a>
+                                <!--Instagram-->
+                                <a class="ins-ic text-white" href="#">
+                                    <i class="fab fa-instagram white-text"> </i>
+                                </a>
+
+                            </div>
+                            <!-- Grid column -->
+
+                        </div>
+                        <!-- Grid row-->
+
+                    </div>
+                </div>
+
+                <!-- Footer Links -->
+                <div class="container text-center text-md-left mt-5">
+
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+                            <!-- Content -->
+                            <h6 class="text-uppercase font-weight-bold">Amazure</h6>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                            <p>At Amazure, we offer exclusive products which can be afforded directly online and with
+                                prices that are very moderate and alongside an easy navigation through our pages</p>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                            <!-- Links -->
+                            <h6 class="text-uppercase font-weight-bold">Pages</h6>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                            <p>
+                                <a href="#">Home</a>
+                            </p>
+                            <p>
+                                <a href="#">Products</a>
+                            </p>
+                            <p>
+                                <a href="#">Contact Us</a>
+                            </p>
+                            <p>
+                                <a href="#">About Us</a>
+                            </p>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                            <!-- Links -->
+
+                            <h6 class="text-uppercase font-weight-bold">Account</h6>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                            {% if user.is_authenticated %}
+                                <p>
+                                    <a href="{% url 'Account:user_profile' %}">Profile</a>
+                                </p>
+                                <p>
+                                    <a href="{% url 'logout' %}">Logout</a>
+                                </p>
+                            {% else %}
+                                <p>
+                                    <a href="{% url 'Account:register' %}">Register</a>
+                                </p>
+
+                                <a href="{% url 'Account:user_login' %}">Login</a>
+
+                            {% endif %}
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                            <!-- Links -->
+                            <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 100px;">
+                            <p>
+                                <i class="fas fa-home mr-3"></i>Yaounde, Yde Cameroon</p>
+                            <p>
+                                <i class="fas fa-envelope mr-3"></i> info@amazure.com</p>
+                            <p>
+                                <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                            <p>
+                                <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+
+                        </div>
+                        <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row -->
+
+                </div>
+                <!-- Footer Links -->
+
+                <!-- Copyright -->
+                <div class="footer-copyright text-center py-3" style="background-color: #0e8ce4;">
+                    <p style="color: white;">Copyright © 2021. Powered by ICT University Students.</p>
+                </div>
+                <!-- Copyright -->
+
+            </footer>
+            <!-- Footer -->
+</body>
+</html>
